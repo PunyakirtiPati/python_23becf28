@@ -1,0 +1,104 @@
+Q1>
+#class for a person detals
+#defining the class
+class Person:
+    #__init__function that takes input for name,age,gender and place of residence
+    def __init__(self,name,age,gender,place):
+        self.name=name
+        self.age=age
+        self.gender=gender
+        self.place=place
+        #function that shows your details
+    def introduction(self):
+        print(f"Hey! My self {self.name}. I am a {self.age} years old {self.gender} from {self.place}.\n")
+#asking for number of people 
+n=int(input("enter the number of people\n"))
+for i in range (n):
+    print(f"enter the {i+1} Person details: ")
+    name=input("Name:")#name of the ith person
+    age=int(input("age:"))#age of the ith person
+    gender=input("gender:")#gender of the i th person
+    place=input("Enter your home town:")#home town of the i th person
+    #passing the class
+    a=Person(name,age,gender,place)
+    #calling the information function in the class
+    a.introduction()
+
+
+
+
+
+
+Q2>
+#initialisation of class
+class BankAccount():
+    def __init__(self,acc_num,acc_hold,balance):
+        self.account_number=acc_num
+        self.account_holder=acc_hold
+        self.balance=balance
+    def deposit(self):#for deposit
+        cash=float(input("Enter the Amount you want to deposit\n"))
+        if cash<0:#checking the validity
+            print("Invalid Amount\n")
+        else:
+            new_balance=self.balance+cash
+            print(f"New balance:{new_balance}")
+            self.balance=new_balance#updating the balnce
+    def withdraw(self):#tto withdraw
+        cash=float(input("Enter the Amount you want to withdraw\n"))
+        if cash<0:#checking the validity
+            print("Invalid Amount\n")
+        else:
+            new_balance=self.balance-cash
+            print(f"New balance:{new_balance}")
+            self.balance=new_balance#updating the balance
+    def get_balance(self):#to check the balance
+        print(f"Your present balance is {self.balance}")
+#asking for details from the user
+print("Enter the details")
+name=input("Name:")#asking for name
+acc_num=int(input("Enter your account number:\n"))#asking for account number
+balance=float(input("enter the balance\n"))#balance input
+a=BankAccount(acc_num,name,balance)
+while True:#looping for the details
+    print("\nEnter your choice:")
+    choice = int(input("1 - Deposit\n2 - Withdraw\n3 - Balance\n4 - Exit\n"))
+
+    if choice == 1:
+        a.deposit()
+    elif choice == 2:
+        a.withdraw()
+    elif choice == 3:
+        a.get_balance()
+    elif choice == 4:
+        print("Thank you for using our service.")
+        break
+    else:
+        print("Invalid input.")
+
+
+
+
+Q3>
+#to print the area,perimetr and circumferenece of a circle
+#defining the class
+class circle:
+    def __init__(self,x,y,r):
+        self.x=x
+        self.y=y
+        self.r=r
+    def get_area(self):#for area
+        print(f"the area of the circle with abscisa {self.x} and ordinate {self.y} is {3.14*self.r*self.r}")
+    def get_perimeter(self):#for perimeter
+        print(f"the perimeter of the circle with abscisa {self.x} and ordinate {self.y} is {2*3.14*self.r}")
+    def get_citrcumference(self):#for circumference
+        print(f"the circumference of the circle with abscisa {self.x} and ordinate {self.y} is {2*3.14*self.r}")
+print("Enter the details of the circle")
+x=int(input("enter the absisca\n"))#input the x coordinate
+y=int(input("enter the ordinate\n"))#input the y coordinate
+r=int(input("enter the radius\n"))#input radius
+cir=circle(x,y,r)
+cir.get_area()
+cir.get_perimeter()
+cir.get_citrcumference()
+    
