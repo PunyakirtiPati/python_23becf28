@@ -1,0 +1,254 @@
+Q1>
+class Person:
+    def __init__(self, name, age):
+        self._name = name
+        self._age = age
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, name):
+        self._name = name
+
+    def get_age(self):
+        return self._age
+
+    def set_age(self, age):
+        self._age = age
+
+class Student(Person):
+    def __init__(self, name, age, student_id, major):
+        super().__init__(name, age)
+        self._student_id = student_id
+        self._major = major
+
+    def get_student_id(self):
+        return self._student_id
+
+    def set_student_id(self, student_id):
+        self._student_id = student_id
+
+    def get_major(self):
+        return self._major
+
+    def set_major(self, major):
+        self._major = major
+
+class Professor(Person):
+    def __init__(self, name, age, employ_id, department):
+        super().__init__(name, age)
+        self._employ_id = employ_id
+        self._department = department
+
+    def get_employ_id(self):
+        return self._employ_id
+
+    def set_employ_id(self, employ_id):
+        self._employ_id = employ_id
+
+    def get_department(self):
+        return self._department
+
+    def set_department(self, department):
+        self._department = department
+
+students = []
+professors = []
+
+# Function to add a new student
+def add_student(name, age, student_id, major):
+    new_student = Student(name, age, student_id, major)
+    students.append(new_student)
+    print(f"Added new student: {new_student.get_name()}, ID: {new_student.get_student_id()}, Major: {new_student.get_major()}")
+
+# Function to add a new professor
+def add_professor(name, age, employ_id, department):
+    new_professor = Professor(name, age, employ_id, department)
+    professors.append(new_professor)
+    print(f"Added new professor: {new_professor.get_name()}, ID: {new_professor.get_employ_id()}, Department: {new_professor.get_department()}")
+
+# Function to display all students
+def display_students():
+    print("Students:")
+    for student in students:
+        print(f"Name: {student.get_name()}, Age: {student.get_age()}, ID: {student.get_student_id()}, Major: {student.get_major()}")
+    if not students:
+        print("No students enrolled.")
+
+# Function to display all professors
+def display_professors():
+    print("Professors:")
+    for professor in professors:
+        print(f"Name: {professor.get_name()}, Age: {professor.get_age()}, ID: {professor.get_employ_id()}, Department: {professor.get_department()}")
+    if not professors:
+        print("No professors employed.")
+
+print("WELCOME TO SILICON UNIVERSITY")
+while True:
+    print("Enter your choice")
+    choice = int(input("1. ADD STUDENT\n2. ADD FACULTY\n3. DISPLAY STUDENT\n4. DISPLAY FACULTY\n5. EXIT\n"))
+    
+    if choice == 1:
+        name = input("Enter the name of the student\n")
+        age = int(input("Enter the age of the student\n"))
+        stud_id = input("Enter the student id\n")
+        maj = input("Enter the major\n")
+        add_student(name, age, stud_id, maj)
+    
+    elif choice == 2:
+        name = input("Enter the faculty name\n")
+        age = int(input("Enter the age of the faculty\n"))
+        em_id = input("Enter the Faculty Id\n")
+        det = input("Enter the department\n")
+        add_professor(name, age, em_id, det)
+    
+    elif choice == 3:
+        display_students()
+    
+    elif choice == 4:
+        display_professors()
+    
+    elif choice == 5:
+        print("Thank you for visiting SILICON UNIVERSITY")
+        break
+    
+    else:
+        print("Invalid choice, please try again.")
+
+
+
+
+
+
+Q2>
+class Product:
+    def __init__(self, product_id, name, price, discount_percentage):
+        self._product_id = product_id
+        self._name = name
+        self._price = price
+        self._discount_percentage = discount_percentage
+      
+    def get_product_id(self):
+        return self._product_id
+
+    def set_product_id(self, product_id):
+        self._product_id = product_id
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, name):
+        self._name = name
+
+    def get_price(self):
+        return self._price
+
+    def set_price(self, price):
+        self._price = price
+
+    def get_discount_percentage(self):
+        return self._discount_percentage
+
+    def set_discount_percentage(self, discount_percentage):
+        self._discount_percentage = discount_percentage
+
+    def _calculate_final_price(self):
+        return self._price * (1 - self._discount_percentage / 100)
+
+    def get_final_price(self):
+        return self._calculate_final_price()
+
+class Electronics(Product):
+    def __init__(self, product_id, name, price, discount_percentage, warranty_period):
+        super().__init__(product_id, name, price, discount_percentage)
+        self._warranty_period = warranty_period
+
+    def get_warranty_period(self):
+        return self._warranty_period
+
+    def set_warranty_period(self, warranty_period):
+        self._warranty_period = warranty_period
+
+class Clothing(Product):
+    def __init__(self, product_id, name, price, discount_percentage, size, material):
+        super().__init__(product_id, name, price, discount_percentage)
+        self._size = size
+        self._material = material
+
+    def get_size(self):
+        return self._size
+
+    def set_size(self, size):
+        self._size = size
+
+    def get_material(self):
+        return self._material
+
+    def set_material(self, material):
+        self._material = material
+
+electronic = []
+clothing = []
+
+def add_electronic(product_id, name, price, discount_percentage, warranty_period):
+    elec = Electronics(product_id, name, price, discount_percentage, warranty_period)
+    electronic.append(elec)
+    print("Electronic item added.\n")
+
+def add_clothing(product_id, name, price, discount_percentage, size, material):
+    clot = Clothing(product_id, name, price, discount_percentage, size, material)
+    clothing.append(clot)
+    print("Clothing item added.\n")
+
+def display_all_products():
+    print("Electronics:")
+    if electronic:
+        for item in electronic:
+            print(f"ID: {item.get_product_id()}, Name: {item.get_name()}, Price: {item.get_price()}, Discount: {item.get_discount_percentage()}%, Warranty: {item.get_warranty_period()}")
+    else:
+        print("No electronic items.")
+
+    print("\nClothing:")
+    if clothing:
+        for item in clothing:
+            print(f"ID: {item.get_product_id()}, Name: {item.get_name()}, Price: {item.get_price()}, Discount: {item.get_discount_percentage()}%, Size: {item.get_size()}, Material: {item.get_material()}")
+    else:
+        print("No clothing items.")
+
+print("WELCOME TO SILICON SHOP")
+while True:
+    print("\nEnter your choice:")
+    print("1. ADD ELECTRONICS")
+    print("2. ADD CLOTHING")
+    print("3. DISPLAY ALL PRODUCTS")
+    print("4. EXIT")
+
+    choice = input("Enter your choice (1/2/3/4): ")
+
+    if choice == '1':
+        prd_id = int(input("Enter the product Id: "))
+        name = input("Enter the product name: ")
+        price = float(input("Enter the price: "))
+        dis_per = float(input("Enter the discount percentage: "))
+        war_per = input("Enter the warranty period: ")
+        add_electronic(prd_id, name, price, dis_per, war_per)
+
+    elif choice == '2':
+        prd_id = int(input("Enter the product Id: "))
+        name = input("Enter the product name: ")
+        price = float(input("Enter the price: "))
+        dis_per = float(input("Enter the discount percentage: "))
+        size = input("Enter the size (S/M/L/XL/XXL/XXXL): ")
+        material = input("Enter the material (cotton, nylon, synthetic, wool): ")
+        add_clothing(prd_id, name, price, dis_per, size, material)
+
+    elif choice == '3':
+        display_all_products()
+
+    elif choice == '4':
+        print("THANK YOU FOR VISITING SILICON SHOP")
+        break
+
+    else:
+        print("Invalid Input. Please enter a valid choice (1/2/3/4).\n")
+
